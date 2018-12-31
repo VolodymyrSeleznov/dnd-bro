@@ -1,6 +1,12 @@
 package org.wharagaradoo.dndbro.database;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 /** @author Created by Vladimir Seleznov <v.e.seleznov@gmail.com> on 2018-12-29. */
@@ -17,10 +23,23 @@ public class PostgreClient {
                 
         }
 
+        public Map<String, String> getQuerryResult(String query) throws SQLException {
+                
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                Map<String, String> result = new HashMap<>();
 
-        public Connection getConnection() {
-                return conn;
+                while (rs.next()) {
+
+                }
+
+                return result;
+
         }
+
+        
+
+
 
 
 }

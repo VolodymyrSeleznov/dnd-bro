@@ -11,10 +11,7 @@ public class SkillsMap {
 
         static {
 
-                skillCharsMap.add(Skills.ACROBATICS, Stats.DEX)
-                skillCharsMap.add
-
-
+                skillCharsMap.put(Skills.ACROBATICS, Stats.DEX);
         }        
         
         // Map.ofEntries(

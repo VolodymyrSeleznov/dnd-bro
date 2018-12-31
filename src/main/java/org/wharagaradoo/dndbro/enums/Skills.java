@@ -1,7 +1,6 @@
 package org.wharagaradoo.dndbro.enums;
 
-public enum Skills
-{
+public enum Skills {
         ACROBATICS,
         ANIMAL_HANDLING,
         ARCANA, 
