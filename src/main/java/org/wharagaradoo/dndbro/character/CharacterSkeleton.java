@@ -11,7 +11,7 @@ import org.wharagaradoo.dndbro.enums.SkillsMap;
 public class CharacterSkeleton {
         // Get from database
         private int totalLevel;
-
+        
         
         private static Map<Stats, Integer> characteristics = createCharMap();
         private static Map<Stats, Integer> createCharMap()

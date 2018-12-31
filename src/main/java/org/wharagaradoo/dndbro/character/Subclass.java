@@ -1,0 +1,1 @@
+// describe uncommon for each subclasses features (?extend class)
