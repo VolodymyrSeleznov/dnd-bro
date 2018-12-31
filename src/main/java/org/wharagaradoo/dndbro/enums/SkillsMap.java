@@ -7,32 +7,24 @@ public class SkillsMap {
 
 
         public static Map<Skills, Stats> skillCharsMap = new HashMap<>();
-
-
         static {
 
                 skillCharsMap.put(Skills.ACROBATICS, Stats.DEX);
-        }        
-        
-        // Map.ofEntries(
-        //         Map.Entry(Skills.ACROBATICS, Stats.DEX)
-                // entry(Skills., Stats.WIS),
-                // entry(Skills.arcana, Stats.INT),
-                // entry(Skills.athletics, Stats.STR),
-                // entry(Skills.deception, Stats.CHA),
-                // entry(Skills.history, Stats.INT),
-                // entry(Skills.insight, Stats.WIS),
-                // entry(Skills.intimidation, Stats.CHA),
-                // entry(Skills.investigation, Stats.INT),
-                // entry(Skills.medicine, Stats.WIS), 
-                // entry(Skills.nature, Stats.INT),
-                // entry(Skills.perception, Stats.WIS),
-                // entry(Skills.performance, Stats.CHA),
-                // entry(Skills.persuation, Stats.CHA),
-                // entry(Skills.religion, Stats.INT),
-                // entry(Skills.sleight_of_hand, Stats.DEX),
-                // entry(Skills.stealth, Stats.DEX),
-                // entry(Skills.survival, Stats.WIS)
-        // );
-
+                skillCharsMap.put(Skills.ANIMAL_HANDLING, Stats.WIS);
+                skillCharsMap.put(Skills.ARCANA, Stats.INT);
+                skillCharsMap.put(Skills.ATHLETICS, Stats.STR);
+                skillCharsMap.put(Skills.DECEPTION, Stats.CHA);
+                skillCharsMap.put(Skills.HISTORY, Stats.INT);
+                skillCharsMap.put(Skills.INSIGHT, Stats.WIS);
+                skillCharsMap.put(Skills.INTIMIDATION, Stats.CHA);
+                skillCharsMap.put(Skills.MEDICINE, Stats.WIS);
+                skillCharsMap.put(Skills.NATURE, Stats.INT);
+                skillCharsMap.put(Skills.PERCEPTION, Stats.WIS);
+                skillCharsMap.put(Skills.PERFORMANCE, Stats.CHA);
+                skillCharsMap.put(Skills.PERSUATION, Stats.CHA);
+                skillCharsMap.put(Skills.RELIGION, Stats.INT);
+                skillCharsMap.put(Skills.SLEIGHT_OF_HAND, Stats.DEX);
+                skillCharsMap.put(Skills.STEALTH, Stats.DEX);
+                skillCharsMap.put(Skills.SURVIVAL, Stats.WIS);
+        }
 };

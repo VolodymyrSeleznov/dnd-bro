@@ -30,7 +30,7 @@ public class PostgreClient {
                 Map<String, String> result = new HashMap<>();
 
                 while (rs.next()) {
-
+                        
                 }
 
                 return result;
