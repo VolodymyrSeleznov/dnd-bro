@@ -15,6 +15,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 import org.wharagaradoo.dndbro.handler.DiceRoller;
+import org.wharagaradoo.dndbro.handler.Updater;
 
 import javax.security.auth.login.LoginException;
 
@@ -75,6 +76,8 @@ public class MessageListener extends ListenerAdapter {
 
     } else if (msg.startsWith("!roll")) {
       channel.sendMessage(DiceRoller.processMessage(msg)).queue();
+    } else if (msg.startsWith("!beyond")) {
+      Updater.createCharacter(msg, author.getId());
     }
   }
 }
