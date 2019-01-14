@@ -3,29 +3,20 @@ package org.wharagaradoo.dndbro.parser;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-import org.jsoup.Jsoup;
 import org.wharagaradoo.dndbro.enums.Stats;
 import org.wharagaradoo.dndbro.model.Character;
+import org.wharagaradoo.dndbro.util.json.JsonReceiver;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /** @author Created by Vladimir Seleznov <v.e.seleznov@gmail.com> on 2018-12-30. */
 public class DndBeyondParser {
 
   public static Character parseUrl(String url) {
-    String json = null;
-    try {
-      json = Jsoup.connect(url).ignoreContentType(true).execute().body();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
     Character character = new Character();
-    JsonElement jelement = new JsonParser().parse(Objects.requireNonNull(json));
+    JsonElement jelement = JsonReceiver.getJsonElement(url);
 
     // name
     String name = jelement.getAsJsonObject().get("name").getAsString();
