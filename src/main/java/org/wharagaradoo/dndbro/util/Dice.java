@@ -19,6 +19,7 @@ public class Dice {
   private int result;
 
   public Dice(String dice) throws DiceNotFoundException {
+    dice = dice.replaceAll(" ", "");
     this.dice = dice;
     validate(dice);
     parse(dice);

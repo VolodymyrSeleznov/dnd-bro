@@ -3,25 +3,20 @@ package org.wharagaradoo.dndbro;
 import net.dv8tion.jda.client.entities.Group;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.entities.ChannelType;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.Message;
-import net.dv8tion.jda.core.entities.MessageChannel;
-import net.dv8tion.jda.core.entities.PrivateChannel;
-import net.dv8tion.jda.core.entities.TextChannel;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
-
-import org.wharagaradoo.dndbro.handler.DiceRoller;
 import org.wharagaradoo.dndbro.handler.Updater;
+import org.wharagaradoo.dndbro.statemachine.StateMachine;
 
 import javax.security.auth.login.LoginException;
+import java.util.HashMap;
+import java.util.Map;
 
-/** @author Created by Vladimir Seleznov [v.e.seleznov@gmail.com] on 2018-12-28. */
-@SuppressWarnings("Duplicates")
+/** @author Created by Vladimir Seleznov (v.e.seleznov@gmail.com) on 2018-12-28. */
 public class MessageListener extends ListenerAdapter {
+
+  public static Map<User, StateMachine> stateMachines = new HashMap<>();
 
   public static void main(String[] args) {
     try {
@@ -45,6 +40,13 @@ public class MessageListener extends ListenerAdapter {
     MessageChannel channel = event.getChannel();
     String msg = message.getContentDisplay();
     boolean bot = author.isBot();
+
+    StateMachine stateMachine = stateMachines.get(author);
+    if (stateMachine != null && stateMachine.updateState(event)) {
+      stateMachines.remove(author);
+
+      return;
+    }
 
     if (event.isFromType(ChannelType.TEXT)) {
       Guild guild = event.getGuild();
@@ -75,9 +77,11 @@ public class MessageListener extends ListenerAdapter {
       channel.sendMessage("pong!").queue();
 
     } else if (msg.startsWith("!roll")) {
-      channel.sendMessage(DiceRoller.processMessage(msg)).queue();
+      new DiceRollListener(event).process();
     } else if (msg.startsWith("!beyond")) {
       Updater.createCharacter(msg, author.getId());
+    } else if (msg.startsWith("!minfo")) {
+      new MonsterListener(event).process();
     }
   }
 }
