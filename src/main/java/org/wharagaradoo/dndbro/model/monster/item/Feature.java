@@ -11,7 +11,7 @@ public class Feature {
   private String name;
 
   @JsonProperty("entries")
-  private String[] entries;
+  private Object[] entries;
 
   public String getName() {
     return name;
@@ -21,11 +21,11 @@ public class Feature {
     this.name = name;
   }
 
-  public String[] getEntries() {
+  public Object[] getEntries() {
     return entries;
   }
 
-  public void setEntries(String[] entries) {
+  public void setEntries(Object[] entries) {
     this.entries = entries;
   }
 }

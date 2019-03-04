@@ -8,31 +8,37 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.TextNode;
-import org.wharagaradoo.dndbro.model.monster.item.Resist;
+import org.wharagaradoo.dndbro.model.monster.item.Resists;
 
 import java.io.IOException;
 
 /** @author Created by Vladimir Seleznov (v.e.seleznov@gmail.com) on 2019-01-21. */
-public class ResistDeserializer extends JsonDeserializer<Resist> {
+public class ResistDeserializer extends JsonDeserializer<Resists> {
   @Override
-  public Resist deserialize(JsonParser p, DeserializationContext ctxt)
+  public Resists deserialize(JsonParser p, DeserializationContext ctxt)
       throws IOException, JsonProcessingException {
-    Resist resist = new Resist();
+    Resists resists = new Resists();
 
     TreeNode treeNode = p.readValueAsTree();
-    if (treeNode.isObject()) {
-      ArrayNode arrayNode = (ArrayNode) treeNode.get("resist");
-      for (JsonNode jsonNode : arrayNode) {
-        resist.setPhysicalResist(jsonNode.asText());
-      }
-      resist.setResistType("physical");
 
-    } else if (treeNode.isValueNode()) {
-      TextNode textNode = (TextNode) treeNode;
-      resist.setMagicalResist(textNode.asText());
-      resist.setResistType("magical");
+    if (treeNode.isArray()) {
+      for (JsonNode jsonNode : (ArrayNode) treeNode) {
+        if (jsonNode.isObject()) {
+          ArrayNode arrayNode = (ArrayNode) jsonNode.get("resist");
+          if (arrayNode == null) {
+            continue;
+          }
+          for (JsonNode immuneNode : arrayNode) {
+            resists.setPhysicalResist(immuneNode.asText());
+          }
+        } else {
+
+          TextNode textNode = (TextNode) jsonNode;
+          resists.setMagicalResist(textNode.asText());
+        }
+      }
     }
 
-    return resist;
+    return resists;
   }
 }

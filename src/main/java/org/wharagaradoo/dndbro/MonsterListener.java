@@ -63,7 +63,7 @@ public class MonsterListener {
 
   public void sendOutput() {
     if (monster != null) {
-      channel.sendMessage(monster.getActions()[0].getEntries()[0]).queue();
+//      channel.sendMessage(monster.getActions()[0].getEntries()[0]).queue();
     }
   }
 }

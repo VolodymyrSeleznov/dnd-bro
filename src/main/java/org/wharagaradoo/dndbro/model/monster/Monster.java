@@ -2,7 +2,9 @@ package org.wharagaradoo.dndbro.model.monster;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.wharagaradoo.dndbro.model.monster.item.*;
+import org.wharagaradoo.dndbro.util.json.TypeDeserializer;
 
 /** @author Created by Vladimir Seleznov (v.e.seleznov@gmail.com) on 2019-01-11. */
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -15,16 +17,14 @@ public class Monster {
   private String size;
 
   @JsonProperty("type")
+  @JsonDeserialize(using = TypeDeserializer.class)
   private String type;
 
   @JsonProperty("source")
   private String source;
 
-  @JsonProperty("alignment")
-  private String[] alignments;
-
   @JsonProperty("ac")
-  private Ac[] acs;
+  private Ac acs;
 
   @JsonProperty("hp")
   private Hp hp;
@@ -51,13 +51,13 @@ public class Monster {
   private Save save;
 
   @JsonProperty("resist")
-  private Resist[] resists;
+  private Resists resists;
 
   @JsonProperty("immune")
-  private Immune[] immunes;
+  private Immunes immunes;
 
   @JsonProperty("conditionImmune")
-  private String[] conditionImmunes;
+  private ConditionImmunes conditionImmunes;
 
   @JsonProperty("senses")
   private String senses;
@@ -65,8 +65,8 @@ public class Monster {
   @JsonProperty("passive")
   private int passive;
 
-//  @JsonProperty("cr")
-//  private Cr cr;
+  //  @JsonProperty("cr")
+  //  private Cr cr;
 
   @JsonProperty("trait")
   private Feature[] traits;
@@ -105,11 +105,7 @@ public class Monster {
     return source;
   }
 
-  public String[] getAlignments() {
-    return alignments;
-  }
-
-  public Ac[] getAcs() {
+  public Ac getAcs() {
     return acs;
   }
 
@@ -145,15 +141,15 @@ public class Monster {
     return save;
   }
 
-  public Resist[] getResists() {
+  public Resists getResists() {
     return resists;
   }
 
-  public Immune[] getImmunes() {
+  public Immunes getImmunes() {
     return immunes;
   }
 
-  public String[] getConditionImmunes() {
+  public ConditionImmunes getConditionImmunes() {
     return conditionImmunes;
   }
 
@@ -165,9 +161,9 @@ public class Monster {
     return passive;
   }
 
-//  public Cr getCr() {
-//    return cr;
-//  }
+  //  public Cr getCr() {
+  //    return cr;
+  //  }
 
   public Feature[] getTraits() {
     return traits;

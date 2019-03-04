@@ -53,7 +53,8 @@ public class Dice {
   }
 
   private void validateDiceValue(int diceValue) throws DiceNotFoundException {
-    if (diceValue != 4
+    if (diceValue != 1
+        && diceValue != 4
         && diceValue != 6
         && diceValue != 8
         && diceValue != 10

@@ -10,11 +10,10 @@ import java.util.List;
 /** @author Created by Vladimir Seleznov (v.e.seleznov@gmail.com) on 2019-01-11. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = ResistDeserializer.class)
-public class Resist {
+public class Resists {
 
   private List<String> physicalResists = new ArrayList<>();
-  private String magicalResist;
-  private String resistType;
+  private List<String> magicalResists = new ArrayList<>();
 
   public String[] getPhysicalResists() {
     return physicalResists.toArray(new String[0]);
@@ -24,19 +23,12 @@ public class Resist {
     this.physicalResists.add(physicalResists);
   }
 
-  public String getMagicalResist() {
-    return magicalResist;
+  public List<String> getMagicalResists() {
+    return magicalResists;
   }
 
-  public void setMagicalResist(String magicalResist) {
-    this.magicalResist = magicalResist;
+  public void setMagicalResist(String magicalResists) {
+    this.magicalResists.add(magicalResists);
   }
 
-  public String getResistType() {
-    return resistType;
-  }
-
-  public void setResistType(String resistType) {
-    this.resistType = resistType;
-  }
 }

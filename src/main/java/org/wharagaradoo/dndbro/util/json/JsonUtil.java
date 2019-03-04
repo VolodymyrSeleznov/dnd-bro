@@ -30,6 +30,7 @@ public class JsonUtil {
     try {
       ObjectMapper objectMapper = new ObjectMapper();
       data = objectMapper.readValue(jsonObject, objectClass);
+      System.out.println(jsonObject);
     } catch (IOException e) {
       e.printStackTrace();
       data = null;

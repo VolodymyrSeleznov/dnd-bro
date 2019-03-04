@@ -6,6 +6,7 @@ import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import org.wharagaradoo.dndbro.cache.JsonCacher;
 import org.wharagaradoo.dndbro.handler.Updater;
 import org.wharagaradoo.dndbro.statemachine.StateMachine;
 
@@ -19,6 +20,7 @@ public class MessageListener extends ListenerAdapter {
   public static Map<User, StateMachine> stateMachines = new HashMap<>();
 
   public static void main(String[] args) {
+    JsonCacher.cache();
     try {
       JDA jda =
           new JDABuilder("NTI3NTQ0OTg5MjY2NDc3MDU2.DwZYpw.FkLpur7_P6_QKES9s5H1NtTwPFs")
