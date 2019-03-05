@@ -92,4 +92,10 @@ public class Dice {
 
     return result;
   }
+
+  @Override
+  public String toString() {
+
+    return dice;
+  }
 }

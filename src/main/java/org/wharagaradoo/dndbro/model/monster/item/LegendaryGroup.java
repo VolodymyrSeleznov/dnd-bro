@@ -10,6 +10,13 @@ public class LegendaryGroup {
   @JsonProperty("name")
   private String name;
 
+  @Override
+  public String toString() {
+    return
+            "Name:" + name +
+            "; " + "source:" + source;
+  }
+
   @JsonProperty("source")
   private String source;
 }

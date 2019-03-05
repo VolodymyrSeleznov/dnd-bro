@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.wharagaradoo.dndbro.model.monster.item.*;
 import org.wharagaradoo.dndbro.util.json.TypeDeserializer;
 
+import java.util.Arrays;
+
 /** @author Created by Vladimir Seleznov (v.e.seleznov@gmail.com) on 2019-01-11. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Monster {
@@ -65,8 +67,8 @@ public class Monster {
   @JsonProperty("passive")
   private int passive;
 
-  //  @JsonProperty("cr")
-  //  private Cr cr;
+  @JsonProperty("cr")
+  private Cr cr;
 
   @JsonProperty("trait")
   private Feature[] traits;
@@ -161,9 +163,9 @@ public class Monster {
     return passive;
   }
 
-  //  public Cr getCr() {
-  //    return cr;
-  //  }
+  public Cr getCr() {
+    return cr;
+  }
 
   public Feature[] getTraits() {
     return traits;
@@ -191,5 +193,86 @@ public class Monster {
 
   public String[] getSenseTags() {
     return senseTags;
+  }
+
+  @Override
+  public String toString() {
+    return "**Name:** "
+        + name
+        + "\n"
+        + "**Size:** "
+        + size
+        + "\n"
+        + "**Type:** "
+        + type
+        + "\n"
+        + "**Source:** "
+        + source
+        + "\n"
+        + "**Acs:** "
+        + acs
+        + "\n"
+        + "**Hp:** "
+        + hp
+        + "\n"
+        + "**Str:** "
+        + str
+        + "\n"
+        + "**Dex:** "
+        + dex
+        + "\n"
+        + "**Con:** "
+        + con
+        + "\n"
+        + "**Intellect:** "
+        + intellect
+        + "\n"
+        + "**Wis:** "
+        + wis
+        + "\n"
+        + "**Cha:** "
+        + cha
+        + "\n"
+        + "**Save:** "
+        + save
+        + "\n"
+        + "**Resists:** "
+        + resists
+        + "\n"
+        + "**Immunes:** "
+        + immunes
+        + "\n"
+        + "**ConditionImmunes:** "
+        + conditionImmunes
+        + "\n"
+        + "**Senses:** "
+        + senses
+        + "\n"
+        + "**Passive:** "
+        + passive
+        + "\n"
+        + "**Cr:** "
+        + cr
+        + "\n"
+        + "**Traits:**\n"
+        + Arrays.toString(traits)
+        + "\n"
+        + "**Actions:**\n"
+        + Arrays.toString(actions)
+        + "\n"
+        + "**Legendaries:**\n"
+        + Arrays.toString(legendaries)
+        + "\n"
+        + "**LegendaryGroup:** "
+        + legendaryGroup
+        + "\n"
+        + "**Page:** "
+        + page
+        + "\n"
+        + "**TraitTags:** "
+        + Arrays.toString(traitTags)
+        + "\n"
+        + "**SenseTags:** "
+        + Arrays.toString(senseTags);
   }
 }

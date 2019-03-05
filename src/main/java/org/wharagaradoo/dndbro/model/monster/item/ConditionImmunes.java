@@ -18,6 +18,12 @@ public class ConditionImmunes {
     return conditionImmunes;
   }
 
+  @Override
+  public String toString() {
+
+    return "Condition Immunities: " + String.join(" | ", conditionImmunes);
+  }
+
   public void setConditionImmune(String conditionImmune) {
     conditionImmunes.add(conditionImmune);
   }

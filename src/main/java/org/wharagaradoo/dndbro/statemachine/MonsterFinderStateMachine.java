@@ -24,7 +24,7 @@ public class MonsterFinderStateMachine implements StateMachine {
     stringBuilder.append("Please specify an option");
     for (int i = 0; i < monsters.size(); i++) {
       Monster monster = monsters.get(i);
-      stringBuilder.append("\n/*").append(i).append("*/ ").append(monster.getName());
+      stringBuilder.append("\n**").append(i).append("** ").append(monster.getName());
     }
     MessageChannel channel = event.getChannel();
     channel.sendMessage(stringBuilder).queue();

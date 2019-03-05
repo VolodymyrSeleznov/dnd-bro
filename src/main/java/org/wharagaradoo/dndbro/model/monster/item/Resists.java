@@ -27,8 +27,12 @@ public class Resists {
     return magicalResists;
   }
 
+  @Override
+  public String toString() {
+    return "PhysicalResists:" + physicalResists + "; " + "MagicalResists=" + magicalResists;
+  }
+
   public void setMagicalResist(String magicalResists) {
     this.magicalResists.add(magicalResists);
   }
-
 }

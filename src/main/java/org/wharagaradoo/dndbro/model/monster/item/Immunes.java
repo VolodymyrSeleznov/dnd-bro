@@ -28,6 +28,15 @@ public class Immunes {
     physicalImmunities.add(physicalImmunity);
   }
 
+  @Override
+  public String toString() {
+    return "PhysicalImmunities:"
+        + physicalImmunities
+        + "; "
+        + "MagicalImmunities:"
+        + magicalImmunities;
+  }
+
   public String[] getPhysicalImmunities() {
 
     return physicalImmunities.toArray(new String[0]);

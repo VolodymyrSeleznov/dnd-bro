@@ -25,7 +25,12 @@ public class Ac {
     return condition;
   }
 
-  public void setCondition(String condition) {
+    @Override
+    public String toString() {
+      return "AC: " + ac;
+    }
+
+    public void setCondition(String condition) {
     this.condition = condition;
   }
 }
